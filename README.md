@@ -224,6 +224,10 @@ customer-segmentation/
 ├── model_features.pkl              # Feature names used during training
 ├── segment_encoder.pkl             # LabelEncoder for segment names
 │
+├── CustomerSegmentation.pptx       # Presentation deck (project walkthrough)
+├── Customer_Segmentation.pdf       # Report PDF  of the Project
+├── ECommerce_Segmentation_Dashboard.pbix  # Power BI interactive dashboard
+│
 ├── .gitignore                      # Excludes large data files and pkl artifacts
 └── README.md                       # Project documentation
 ```
