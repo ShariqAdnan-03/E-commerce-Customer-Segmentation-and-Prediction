@@ -164,10 +164,10 @@ The 3 K-Means clusters are profiled by their average RFM values and merged with 
 
 | Segment | Share | Recency | Frequency | Monetary | Business Action |
 |---|---|---|---|---|---|
-| **VIP Segment** | 9.9% | Low | Very High | ≥ £18,714 | Dedicated account managers, exclusive rewards, early product access |
-| **Loyal Regulars** | 31.5% | Low | High | Moderate | Loyalty programme, referral bonuses, first-look newsletters |
-| **Casual Buyers** | 20.3% | Medium | Low | Low | Personalised recommendations, abandoned cart flows, upsell campaigns |
-| **At-Risk / Churning** | 38.2% | High | Declining | Low | Win-back emails, time-limited discounts, exit surveys |
+| **VIP Segment** | 1.0% | Low | Very High | ≥ £18,714 | Dedicated account managers, exclusive rewards, early product access |
+| **Loyal Regulars** | 23.8% | Low | High | Moderate | Loyalty programme, referral bonuses, first-look newsletters |
+| **Casual Buyers** | 51.1% | Medium | Low | Low | Personalised recommendations, abandoned cart flows, upsell campaigns |
+| **At-Risk / Churning** | 24.1% | High | Declining | Low | Win-back emails, time-limited discounts, exit surveys |
 
 ---
 
@@ -177,21 +177,21 @@ With segments labelled, a supervised classifier is trained to predict the segmen
 
 | Model | Accuracy | Notes |
 |---|---|---|
-| **Random Forest** | **~97%** | ✅ Champion model |
-| LightGBM | ~95% | Strong runner-up |
-| Decision Tree | ~93% | Interpretable, prone to overfitting |
-| SVM | ~89% | Strong boundary, slower training |
-| KNN | ~86% | Sensitive to scale |
-| Logistic Regression | ~82% | Too linear for this problem |
-| Naive Bayes | ~76% | Independence assumption violated by RFM correlations |
+| **Random Forest** | **99.7%** | ✅ Champion model — chosen for ensemble robustness |
+| Decision Tree | 99.7% | Equal accuracy, higher overfitting risk |
+| KNN | 99.5% | Strong but scale-sensitive |
+| LightGBM | 99.4% | Strong runner-up |
+| SVM | 99.2% | Strong boundary, slower training |
+| Logistic Regression | 99.1% | Too linear for this problem |
+| Naive Bayes | 92.7% | Independence assumption violated by RFM correlations |
 
 ### Feature Importance (Random Forest)
 
 | Feature | Importance | Interpretation |
 |---|---|---|
-| `Monetary` | 52% | Spend is the strongest predictor of segment |
-| `Frequency` | 31% | Order count separates loyal from casual |
-| `Recency` | 17% | Flags at-risk customers who have gone quiet |
+| `Frequency` | ~34% | Order count is the strongest predictor of segment |
+| `Monetary` | ~33% | Spend closely follows frequency in predictive power |
+| `Recency` | ~32% | Flags at-risk customers who have gone quiet |
 
 > Monetary being the #1 driver validates the decision to manually isolate VIPs by monetary threshold before clustering.
 
@@ -202,8 +202,8 @@ With segments labelled, a supervised classifier is trained to predict the segmen
 - ✅ **4,335 customers** profiled and segmented from raw transactional data
 - ✅ **44 VIP customers** isolated — spending 9× the customer average
 - ✅ **K = 3** validated scientifically via dual-method evaluation
-- ✅ **Random Forest** achieved ~97% classification accuracy on held-out test data
-- ✅ **Monetary value** confirmed as the primary driver of segment membership (52%)
+- ✅ **Random Forest** achieved 99.7% classification accuracy on held-out test data
+- ✅ **All three RFM features** contribute near-equally — Frequency (~34%), Monetary (~33%), Recency (~32%)
 - ✅ **Streamlit app** deployed for real-time customer segment prediction
 
 ---
@@ -225,7 +225,7 @@ customer-segmentation/
 ├── segment_encoder.pkl             # LabelEncoder for segment names
 │
 ├── CustomerSegmentation.pptx       # Presentation deck (project walkthrough)
-├── Customer_Segmentation.pdf       # Report PDF  of the Project
+├── Customer_Segmentation.pdf       # PDF export of the presentation
 ├── ECommerce_Segmentation_Dashboard.pbix  # Power BI interactive dashboard
 │
 ├── .gitignore                      # Excludes large data files and pkl artifacts
