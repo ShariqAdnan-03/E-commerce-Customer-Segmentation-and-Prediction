@@ -91,7 +91,7 @@ Segment Labelling     → 4-tier business segments assigned
 Classification        → Random Forest trained on labelled RFM data
    │
    ▼
-Deployment            → Flask app for real-time segment prediction
+Deployment            → Streamlit app for real-time segment prediction
 ```
 
 ---
@@ -204,7 +204,7 @@ With segments labelled, a supervised classifier is trained to predict the segmen
 - ✅ **K = 3** validated scientifically via dual-method evaluation
 - ✅ **Random Forest** achieved ~97% classification accuracy on held-out test data
 - ✅ **Monetary value** confirmed as the primary driver of segment membership (52%)
-- ✅ **Flask app** deployed for real-time customer segment prediction
+- ✅ **Streamlit app** deployed for real-time customer segment prediction
 
 ---
 
@@ -214,7 +214,7 @@ With segments labelled, a supervised classifier is trained to predict the segmen
 customer-segmentation/
 │
 ├── Cust_segment.ipynb              # Full analysis notebook (EDA → Modelling)
-├── app.py                          # Flask web application
+├── app.py                          # Streamlit web application
 ├── main.py                         # Entry point
 ├── description1.txt                # Feature/column descriptions
 │
@@ -242,7 +242,7 @@ cd your-repo-name
 
 **2. Install dependencies**
 ```bash
-pip install pandas numpy scikit-learn matplotlib seaborn lightgbm flask
+pip install pandas numpy scikit-learn matplotlib seaborn lightgbm Streamlit
 ```
 
 **3. Add the dataset**
@@ -254,7 +254,7 @@ Download `data.csv` from the [UCI Online Retail Dataset](https://archive.ics.uci
 jupyter notebook Cust_segment.ipynb
 ```
 
-**5. Launch the Flask app**
+**5. Launch the Streamlit app**
 ```bash
 python app.py
 ```
@@ -267,7 +267,7 @@ python app.py
 ![Pandas](https://img.shields.io/badge/Pandas-Data%20Wrangling-150458?logo=pandas)
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-orange?logo=scikit-learn)
 ![LightGBM](https://img.shields.io/badge/LightGBM-Boosting-brightgreen)
-![Flask](https://img.shields.io/badge/Flask-Web%20App-black?logo=flask)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualisation-informational)
 ![Seaborn](https://img.shields.io/badge/Seaborn-Visualisation-9cf)
 
@@ -277,7 +277,7 @@ python app.py
 | `matplotlib` / `seaborn` | Data visualisation |
 | `scikit-learn` | Preprocessing, K-Means, classification models, GridSearchCV |
 | `lightgbm` | Gradient boosting classifier |
-| `flask` | Web application for real-time prediction |
+| `Streamlit` | Web application for real-time prediction |
 
 ---
 
